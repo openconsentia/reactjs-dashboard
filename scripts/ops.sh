@@ -3,8 +3,13 @@
 export UI_IMAGE_NAME=paulwizviz/react-dashboard-ui
 export SERVER_IMAGE_NAME=paulwizviz/react-dashboard-server
 export IMAGE_TAG=dev
+export NODE_IMAGE_TAG=13.10.1
 
 COMMAND="$1"
+
+function dep() {
+    docker run -v ${PWD}/ui:/opt -w /opt -t --rm node:${NODE_IMAGE_TAG} ./dep.sh
+}
 
 function build() {
     docker build -f ./build/server.dockerfile -t ${SERVER_IMAGE_NAME}:${IMAGE_TAG} .
@@ -30,14 +35,17 @@ case $COMMAND in
     "build")
         build
         ;;
+    "clean")
+        clean
+        ;;
+    "dep")
+        dep
+        ;;
     "run")
         run
         ;;
     "stop")
         stop
-        ;;
-    "clean")
-        clean
         ;;
     *)
         echo "$0 [build | run | stop | clean ]"
