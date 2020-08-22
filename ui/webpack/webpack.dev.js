@@ -1,5 +1,5 @@
 const baseConfig = require('./webpack.base');
-const merge = require('webpack-merge');
+const { merge } = require('webpack-merge');
 const ErrorOverlayPlugin = require('error-overlay-webpack-plugin');
 
 console.log(baseConfig.output.path)
@@ -9,7 +9,7 @@ const devConfig = {
     devServer: {
         host: '0.0.0.0',
         contentBase: baseConfig.output.path,
-        port: 3030,
+        port: 3031,
         historyApiFallback: true
     },
     module: {
@@ -28,7 +28,7 @@ const devConfig = {
     plugins: [
       new ErrorOverlayPlugin()
     ],
-    devtool: 'cheap-module-source-map'
+    devtool: 'inline-source-map'
 }
 
-module.exports = merge.smart(baseConfig, devConfig)
+module.exports = merge(baseConfig, devConfig)

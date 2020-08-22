@@ -1,0 +1,45 @@
+version: '3.4'
+
+services:
+
+    router:
+        image: binocarlos/noxy
+        ports:
+            - 80:80
+        container_name: router
+        environment:
+            - NOXY_DEFAULT_HOST=ui-dev
+            - NOXY_DEFAULT_PORT=3031
+            - NOXY_DEFAULT_WS=1
+            - NOXY_API_FRONT=/api
+            - NOXY_API_HOST=server-dev
+            - NOXY_API_PORT=9000
+        networks:
+            - openconsentia_react_dashboard_network
+
+    ui-dev:
+        image: ${UI_IMAGE_DEV}:${IMAGE_TAG}
+        container_name: ui-dev
+        expose:
+            - 3031
+        ports:
+            - 3031:3031
+        volumes:
+            - ../ui/src:/opt/src
+        networks:
+            - openconsentia_react_dashboard_network
+
+    server-dev:
+        image: ${SERVER_IMAGE}:${IMAGE_TAG}
+        container_name: server-dev
+        expose:
+            - 9000
+        ports:
+            - 9000:9000
+        volumes: 
+            - ../server/src:/opt/src
+        networks:
+            - openconsentia_react_dashboard_network
+
+networks:
+    openconsentia_react_dashboard_network:
