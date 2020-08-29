@@ -1,9 +1,9 @@
 const { merge } = require('webpack-merge')
 
-const baseConfig = require('./webpack.base')
+const commonConfig = require('./webpack.common')
 
 const productionConfig = {
   mode: 'production'
 }
 
-module.exports = merge(baseConfig, productionConfig);
+module.exports = merge(commonConfig, productionConfig);
