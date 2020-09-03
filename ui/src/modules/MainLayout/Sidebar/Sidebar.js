@@ -16,12 +16,12 @@ import React from 'react';
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/styles';
-import { Divider, Drawer } from '@material-ui/core';
+import { Drawer } from '@material-ui/core';
 import DashboardIcon from '@material-ui/icons/Dashboard';
-import LockOpenIcon from '@material-ui/icons/LockOpen';
 
 import Profile from './Profile';
 import SidebarNav from './SidebarNav';
+
 
 const useStyles = makeStyles(theme => ({
     drawer: {
@@ -47,7 +47,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const Sidebar = props => {
-    const { open, variant, onClose, className, displayName, ...rest } = props;
+    const { open, variant, onClose, className, ...rest } = props;
     const classes = useStyles();
 
     const pages = [
@@ -55,11 +55,6 @@ const Sidebar = props => {
             title: 'Dashboard',
             href: '/dashboard',
             icon: <DashboardIcon />
-        },
-        {
-            title: 'Authentication',
-            href: '/auth',
-            icon: <LockOpenIcon />
         }
     ];
 
@@ -75,8 +70,7 @@ const Sidebar = props => {
                 {...rest}
                 className={clsx(classes.root, className)}
             >
-                <Profile displayName={displayName}/>
-                <Divider className={classes.divider} />
+                <Profile/>
                 <SidebarNav
                     className={classes.nav}
                     pages={pages}
@@ -87,7 +81,6 @@ const Sidebar = props => {
 };
 
 Sidebar.propTypes = {
-    displayName: PropTypes.string,
     className: PropTypes.string,
     onClose: PropTypes.func,
     open: PropTypes.bool.isRequired,

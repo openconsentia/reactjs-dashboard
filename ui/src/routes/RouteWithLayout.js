@@ -12,20 +12,32 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+// React
 import React from 'react';
+import { Route } from 'react-router-dom';
 
-import { Provider } from 'react-redux';
+// Others
+import PropTypes from 'prop-types';
 
-import { Routes } from '../Routes';
-import {BlueTheme, applyTheme} from '../theme';
-import {store} from '../modules/store';
+const RouteWithLayout = props => {
+    const { layout: Layout, component: Component, ...rest } = props;
 
-const App = () => {
     return (
-        <Provider store={store}>
-            <Routes />
-        </Provider>
+        <Route
+            {...rest}
+            render={matchProps => (
+                <Layout>
+                    <Component {...matchProps} />
+                </Layout>
+            )}
+        />
     );
 };
 
-export default applyTheme(BlueTheme, App);
+RouteWithLayout.propTypes = {
+    component: PropTypes.any.isRequired,
+    layout: PropTypes.any.isRequired,
+    path: PropTypes.string
+};
+
+export default RouteWithLayout;

@@ -10,7 +10,8 @@ const devConfig = {
         host: '0.0.0.0',
         contentBase: commonConfig.output.path,
         port: 3031,
-        historyApiFallback: true
+        historyApiFallback: true,
+        hot: true
     },
     module: {
       rules: [

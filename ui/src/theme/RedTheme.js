@@ -12,4 +12,33 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-export { default as MainLayout } from './MainLayout';
+import React from 'react';
+
+import PropTypes from 'prop-types';
+
+import { ThemeProvider, createMuiTheme } from '@material-ui/core';
+
+import { red } from '@material-ui/core/colors';
+
+const theme = createMuiTheme({
+    palette: {
+        primary: red,
+        type: 'light'
+    },
+    typography: {
+        useNextVariants: true,
+    },
+});
+
+const RedTheme = (props) => {
+    const { children } = props;
+    return (
+        <ThemeProvider theme={theme}>{children}</ThemeProvider>
+    );
+};
+
+RedTheme.propTypes = {
+    children: PropTypes.object
+};
+
+export default RedTheme;

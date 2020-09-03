@@ -36,13 +36,12 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const Profile = props => {
-    const { className, displayName, ...rest } = props;
+    const { className, ...rest } = props;
     const classes = useStyles();
 
     const userProfile = {
-        name: displayName,
         avatar: '/images/avatars/avatar.png',
-        bio: 'Coder'
+        bio: 'Bio'
     };
 
     return (
@@ -61,7 +60,6 @@ const Profile = props => {
                 className={classes.name}
                 variant="h4"
             >
-                {userProfile.name}
             </Typography>
             <Typography variant="body2">{userProfile.bio}</Typography>
         </div>

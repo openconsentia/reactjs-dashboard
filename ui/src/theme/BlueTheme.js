@@ -12,15 +12,33 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-import { connect } from 'react-redux';
-import { MainLayout } from '../components';
+import React from 'react';
 
-const mapStateToProps = (store) => {
-    return {
-        user: store.authReducer.user
-    };
+import PropTypes from 'prop-types';
+
+import { ThemeProvider, createMuiTheme } from '@material-ui/core';
+
+import { blue } from '@material-ui/core/colors';
+
+const theme = createMuiTheme({
+    palette: {
+        primary: blue,
+        type: 'light'
+    },
+    typography: {
+        useNextVariants: true,
+    },
+});
+
+const BlueTheme = (props) => {
+    const { children } = props;
+    return (
+        <ThemeProvider theme={theme}>{children}</ThemeProvider>
+    );
 };
 
-export default connect(
-    mapStateToProps,
-)(MainLayout);
+BlueTheme.propTypes = {
+    children: PropTypes.object
+};
+
+export default BlueTheme;

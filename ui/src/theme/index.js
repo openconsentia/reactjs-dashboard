@@ -12,4 +12,6 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-export { default } from './RouteWithLayout';
+export { default as RedTheme } from './RedTheme';
+export { default as BlueTheme } from './BlueTheme';
+export { default as applyTheme } from './applyTheme';

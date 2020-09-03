@@ -12,8 +12,10 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+// React
 import React from 'react';
-import { Switch, Redirect } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Redirect } from 'react-router-dom';
+
 
 import RouteWithLayout from './RouteWithLayout';
 
@@ -27,13 +29,15 @@ import {
 
 const Routes = () => {
     return (
-        <Switch>
-            <Redirect exact from="/" to="/auth"/>
-            <RouteWithLayout component={AuthContainer} exact layout={MinimalLayout} path="/auth"/>
-            <RouteWithLayout component={DashboardView} exact layout={MainLayoutContainer} path="/dashboard"/>
-            <RouteWithLayout component={NotFoundView} exact layout={MinimalLayout} path="/not-found"/>
-            <Redirect to="/not-found" />
-        </Switch>
+        <Router>
+            <Switch>        
+                <Redirect exact from="/" to="/dashboard"/>
+                <RouteWithLayout component={AuthContainer} exact layout={MinimalLayout} path="/auth"/>
+                <RouteWithLayout component={DashboardView} exact layout={MainLayoutContainer} path="/dashboard"/>
+                <RouteWithLayout component={NotFoundView} exact layout={MinimalLayout} path="/not-found"/>
+                <Redirect to="/not-found" />
+            </Switch>
+        </Router>
     );
 };
 

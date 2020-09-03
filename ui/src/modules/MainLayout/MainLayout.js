@@ -39,7 +39,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const MainLayout = (props) => {
-    const { children, user } = props;
+    const { children } = props;
     const classes = useStyles();
     const theme = useTheme();
     const isDesktop = useMediaQuery(theme.breakpoints.up('lg'), {
@@ -67,7 +67,6 @@ const MainLayout = (props) => {
         >
             <Topbar onSidebarOpen={handleSidebarOpen} />
             <Sidebar
-                displayName={user.displayName}
                 onClose={handleSidebarClose}
                 open={shouldOpenSidebar}
                 variant={isDesktop ? 'persistent' : 'temporary'}
@@ -81,7 +80,6 @@ const MainLayout = (props) => {
 };
 
 MainLayout.propTypes = {
-    user: PropTypes.object.isRequired,
     children: PropTypes.node
 };
 

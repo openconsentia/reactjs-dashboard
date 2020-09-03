@@ -14,7 +14,7 @@
 
 import { connect } from 'react-redux';
 import { Auth } from '../components';
-import { fetchAuthUser } from '../actions';
+import { fetchAuthUser } from '../../actions';
 
 const mapStateToProps = (store) => {
     return {

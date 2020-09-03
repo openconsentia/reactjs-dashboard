@@ -25,7 +25,11 @@ services:
         ports:
             - 3031:3031
         volumes:
+            - ../ui/webpack:/opt/webpack
+            - ../ui/images:/opt/images
             - ../ui/src:/opt/src
+            - ../ui/.eslintrc.json:/opt/.eslintrc.json
+            - ../ui/.babelrc:/opt/.babelrc
         networks:
             - openconsentia_react_dashboard_network
 
