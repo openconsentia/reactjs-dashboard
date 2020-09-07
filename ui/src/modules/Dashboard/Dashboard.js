@@ -12,14 +12,25 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+// React
 import React from 'react';
+
+// Materials UI
 import Grid from '@material-ui/core/Grid';
+import Paper from '@material-ui/core/Paper';
 
 import { makeStyles } from '@material-ui/core/styles';
 
-const useStyles = makeStyles(theme => ({
+// Code body
+const useStyles = makeStyles((theme) => ({
     root: {
-        padding: theme.spacing(4)
+        flexGrow: 1,
+    },
+    paper: {
+        marginTop: 20,
+        padding: theme.spacing(2),
+        textAlign: 'center',
+        color: theme.palette.text.secondary
     }
 }));
 
@@ -30,11 +41,25 @@ const Dashboard = () => {
     return (
         <div className={classes.root}>
             <Grid container spacing={1}>
-                <Grid item lg={3} sm={6} xl={3} xs={12}>
-                    Grid1
-                </Grid>
                 <Grid item xs={12}>
-                    grid2
+                    <Paper className={classes.paper}>
+                        Grid (xs=12)
+                    </Paper>
+                </Grid>
+                <Grid item xs={6}>
+                    <Paper className={classes.paper}>
+                        Grid (xs=6)
+                    </Paper>
+                </Grid>
+                <Grid item xs={3}>
+                    <Paper className={classes.paper}>
+                        Grid (xs=3)
+                    </Paper>
+                </Grid>
+                <Grid item xs={1}>
+                    <Paper className={classes.paper}>
+                        Grid (xs=1)
+                    </Paper>
                 </Grid>
             </Grid>
         </div>

@@ -8,7 +8,7 @@ export IMAGE_TAG=current
 COMMAND="$1"
 SUBCOMMAND="$2"
 
-message="Usage: $0 [build [dev | prod] | clean | run [dev | prod] | status | stop]"
+message="Usage: $0 build [dev | prod] | clean | run [dev | prod] | status | stop [dev | prod]"
 
 if [ -z "$COMMAND" ]; then
     echo $message

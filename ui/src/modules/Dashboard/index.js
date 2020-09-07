@@ -13,4 +13,4 @@
 // limitations under the License.
 
 
-export { default } from './components';
+export { default } from './Dashboard';
